@@ -23,7 +23,7 @@
 int main () {
     glob_init();
 
-    fun::load_font("lato_light", "lato_light.ttf");
+    fun::resources::load_font("lato_light", "lato_light.ttf");
 
     fun::WindowManager::Init("LogicCircuit");
 
@@ -57,13 +57,13 @@ int main () {
     // level.Init();
 
     while (window_data->window.isOpen()) {
-        fun::Input::Listen();
-        fun::Time::Recalculate();
+        fun::input::listen();
+        fun::time::recalculate();
         fun::Interaction::Update();
-        ImGui::SFML::Update(window_data->window, fun::Time::DeltaTimeObject());
+        ImGui::SFML::Update(window_data->window, fun::time::delta_time_object());
 
         window_data->PollEvents();
-        window_data->world_view.move(fun::Input::K2D() * sf::Vector2f(1, -1) * window_data->zoom * 7.f);
+        window_data->world_view.move(fun::input::keyboard_2d() * sf::Vector2f(1, -1) * window_data->zoom * .5f);
 
         graph.Update();
         graph.Draw(window_data);

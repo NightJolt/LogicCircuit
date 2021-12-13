@@ -45,7 +45,7 @@ void BulbNode::UpdateShape(const sf::Vector2f& p) {
 }
 
 bool BulbNode::Interactable_Interaction(const sf::Vector2f& mouse_position) {
-    return fun::Math::Magnitude(mouse_position - shape.getPosition()) < shape.getRadius();
+    return fun::math::magnitude(mouse_position - shape.getPosition()) < shape.getRadius();
 }
 
 const sf::Vector2f& BulbNode::GetPosition() const {

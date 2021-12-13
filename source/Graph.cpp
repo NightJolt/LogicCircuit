@@ -9,7 +9,7 @@ void Graph::Update() {
         node->Update();
     }
 
-    delta_time_sum += fun::Time::DeltaTime();
+    delta_time_sum += fun::time::delta_time();
 
     while (delta_time_sum > clock_speed) {
         delta_time_sum -= clock_speed;

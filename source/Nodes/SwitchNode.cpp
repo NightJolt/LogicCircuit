@@ -49,7 +49,7 @@ void SwitchNode::UpdateShape(const sf::Vector2f& p) {
 }
 
 bool SwitchNode::Interactable_Interaction(const sf::Vector2f& mouse_position) {
-    return fun::Math::Abs(mouse_position - shape.GetPosition()) < shape.GetSize() * .5f;
+    return fun::math::abs(mouse_position - shape.GetPosition()) < shape.GetSize() * .5f;
 }
 
 const sf::Vector2f& SwitchNode::GetPosition() const {

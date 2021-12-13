@@ -5,7 +5,7 @@ const sf::Vector2f DefaultNode::INIT_SHAPE_SIZE = { 80, 40 };
 
 DefaultNode::DefaultNode(const std::string& name, int in_pin_count, int out_pin_count) : Node(in_pin_count, out_pin_count) {
     label.setFillColor(LABEL_COLOR);
-    label.setFont(fun::get_font("lato_light"));
+    label.setFont(fun::resources::get_font("lato_light"));
 
     label.setString(name);
     const sf::Vector2f label_size = sf::Vector2f(label.getGlobalBounds().width, label.getGlobalBounds().height);
@@ -19,8 +19,6 @@ DefaultNode::DefaultNode(const std::string& name, int in_pin_count, int out_pin_
     shape.SetSize(shape_size);
 
     UpdateShape({ 0, 0 });
-
-    //shape.SetPosition({ 0, 0 });
 }
 
 DefaultNode::~DefaultNode() noexcept = default;
@@ -62,7 +60,7 @@ void DefaultNode::UpdateShape(const sf::Vector2f& p) {
 }
 
 bool DefaultNode::Interactable_Interaction(const sf::Vector2f& mouse_position) {
-    return fun::Math::Abs(mouse_position - shape.GetPosition()) < shape.GetSize() * .5f;
+    return fun::math::abs(mouse_position - shape.GetPosition()) < shape.GetSize() * .5f;
 }
 
 const sf::Vector2f& DefaultNode::GetPosition() const {

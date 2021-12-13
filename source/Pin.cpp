@@ -45,7 +45,7 @@ void Pin::Draw(fun::WindowManager::WindowData* window_data) const {
 }
 
 bool Pin::Interactable_Interaction(const sf::Vector2f& mouse_position) {
-    return fun::Math::Magnitude(mouse_position - shape.getPosition()) <= RADIUS;
+    return fun::math::magnitude(mouse_position - shape.getPosition()) <= RADIUS;
 }
 
 OutPin::OutPin(void* node) : Pin(node) {}

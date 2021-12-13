@@ -49,7 +49,7 @@ void ButtonNode::UpdateShape(const sf::Vector2f& p) {
 }
 
 bool ButtonNode::Interactable_Interaction(const sf::Vector2f& mouse_position) {
-    return fun::Math::Magnitude(mouse_position - shape.getPosition()) < shape.getRadius();
+    return fun::math::magnitude(mouse_position - shape.getPosition()) < shape.getRadius();
 }
 
 const sf::Vector2f& ButtonNode::GetPosition() const {
