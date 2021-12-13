@@ -21,7 +21,7 @@
 #include "Graph.h"
 
 int main () {
-    glob_init();
+    fun::glob_init();
 
     fun::resources::load_font("lato_light", "lato_light.ttf");
 
@@ -36,7 +36,6 @@ int main () {
 
     ImGuiIO& imgui_io = ImGui::GetIO();
     imgui_io.FontGlobalScale = 2.f;
-    // imgui_io.IniFilename = nullptr;
 
     fun::Level level;
     Graph graph;
