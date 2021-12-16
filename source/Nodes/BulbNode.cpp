@@ -32,7 +32,7 @@ int BulbNode::GetOutPinCount() const {
     return 0;
 }
 
-void BulbNode::Draw(fun::WindowManager::WindowData* window_data) const {
+void BulbNode::Draw(fun::wndmgr::WindowData* window_data) const {
     Node::Draw(window_data);
 
     window_data->AddWorld(shape, Drawable_GetDrawingLayer());

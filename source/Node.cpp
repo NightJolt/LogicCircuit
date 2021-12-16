@@ -43,7 +43,7 @@ void Node::Update() {
     if (Interactable_LeftPressed()) {
         drag_distance = { 0, 0 };
 
-        drag_offset = fun::WindowManager::main_window->GetMouseWorldPosition() - GetPosition();
+        drag_offset = fun::wndmgr::main_window->GetMouseWorldPosition() - GetPosition();
 
         SetLayer(GetLayer() + 100);
     }
@@ -51,7 +51,7 @@ void Node::Update() {
     if (Interactable_LeftHold()) {
         const sf::Vector2f prev_pos = GetPosition();
 
-        UpdateShape(fun::WindowManager::main_window->GetMouseWorldPosition() - drag_offset);
+        UpdateShape(fun::wndmgr::main_window->GetMouseWorldPosition() - drag_offset);
 
         drag_distance += GetPosition() - prev_pos;
     }
@@ -82,7 +82,7 @@ i32 Node::GetLayer() const {
     return Drawable_GetDrawingLayer();
 }
 
-void Node::Draw(fun::WindowManager::WindowData* window_data) const {
+void Node::Draw(fun::wndmgr::WindowData* window_data) const {
     for (auto& in_pin : in_pins) {
         in_pin.Draw(window_data);
     }

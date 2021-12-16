@@ -28,7 +28,7 @@ int ButtonNode::GetOutPinCount() const {
     return 1;
 }
 
-void ButtonNode::Draw(fun::WindowManager::WindowData* window_data) const {
+void ButtonNode::Draw(fun::wndmgr::WindowData* window_data) const {
     Node::Draw(window_data);
 
     window_data->AddWorld(shape, Drawable_GetDrawingLayer());

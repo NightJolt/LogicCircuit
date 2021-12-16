@@ -25,9 +25,9 @@ int main () {
 
     fun::resources::load_font("lato_light", "lato_light.ttf");
 
-    fun::WindowManager::Init("LogicCircuit");
+    fun::wndmgr::init("LogicCircuit");
 
-    fun::WindowManager::WindowData* window_data = fun::WindowManager::main_window;
+    fun::wndmgr::WindowData* window_data = fun::wndmgr::main_window;
     window_data->window.resetGLStates();
     //window_data->window.setFramerateLimit(60);
     window_data->window.setVerticalSyncEnabled(false);

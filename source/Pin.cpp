@@ -30,7 +30,7 @@ void Pin::Update() {
     }
 
     if (Interactable_LeftHold()) {
-        wire->SetPoints(shape.getPosition() + sf::Vector2f { is_type_of(OutPin, this) ? RADIUS : -RADIUS, 0 }, fun::WindowManager::main_window->GetMouseWorldPosition());
+        wire->SetPoints(shape.getPosition() + sf::Vector2f { is_type_of(OutPin, this) ? RADIUS : -RADIUS, 0 }, fun::wndmgr::main_window->GetMouseWorldPosition());
     }
 }
 
@@ -38,7 +38,7 @@ void Pin::SetPosition(const sf::Vector2f& p) {
     shape.setPosition(p);
 }
 
-void Pin::Draw(fun::WindowManager::WindowData* window_data) const {
+void Pin::Draw(fun::wndmgr::WindowData* window_data) const {
     window_data->AddWorld(shape, Drawable_GetDrawingLayer());
 
     if (wire) window_data->AddWorld(*wire, 1000000);
@@ -54,7 +54,7 @@ void OutPin::Update() {
     Pin::Update();
 
     if (Interactable_LeftReleased()) {
-        auto* target = fun::Interaction::ObjectAtPos(fun::WindowManager::main_window->GetMouseWorldPosition());
+        auto* target = fun::Interaction::ObjectAtPos(fun::wndmgr::main_window->GetMouseWorldPosition());
         auto* other = dynamic_cast <InPin*> (target);
 
         if (target && other) {
@@ -78,7 +78,7 @@ void InPin::Update() {
     }
 
     if (Interactable_LeftReleased()) {
-        auto* target = fun::Interaction::ObjectAtPos(fun::WindowManager::main_window->GetMouseWorldPosition());
+        auto* target = fun::Interaction::ObjectAtPos(fun::wndmgr::main_window->GetMouseWorldPosition());
 
         other = dynamic_cast <OutPin*> (target);
 
@@ -90,7 +90,7 @@ void InPin::Update() {
     }
 }
 
-void InPin::Draw(fun::WindowManager::WindowData* window_data) const {
+void InPin::Draw(fun::wndmgr::WindowData* window_data) const {
     if (other) {
         wire->SetPoints(shape.getPosition() - sf::Vector2f { RADIUS, 0 }, other->shape.getPosition() + sf::Vector2f { RADIUS, 0 });
     }
