@@ -6,6 +6,7 @@
 #include "FunEngine2D/core/include/Resources.h"
 #include "FunEngine2D/core/include/Input.h"
 #include "FunEngine2D/core/include/_Time.h"
+#include "FunEngine2D/core/include/tools/Debugger.h"
 #include "FunEngine2D/experimental/include/interactable/Interaction.h"
 #include "FunEngine2D/experimental/include/object_system/Level.h"
 #include "FunEngine2D/experimental/include/drawable/RoundedRect.h"
@@ -53,6 +54,9 @@ int main () {
     graph.AddNode(level.CreateLiveObject <SwitchNode> ());
     graph.AddNode(level.CreateLiveObject <SwitchNode> ());
 
+    fun::debugger::push_msg("adwde", "dqewe");
+    fun::debugger::push_msg("qwe", "wqeq");
+
     // level.Init();
 
     while (window_data->window.isOpen()) {
@@ -67,9 +71,17 @@ int main () {
         graph.Update();
         graph.Draw(window_data);
 
-        //ImGui::ShowDemoWindow();
+        ImGui::ShowDemoWindow();
         level.ShowHierarchy();
         graph.ShowSettings();
+
+        fun::debugger::display();
+
+        // sf::CircleShape cs(100, 20);
+
+        // window_data->window.draw(cs);
+        // window_data->window.display();
+
         window_data->Display(sf::Color::Black);
 
         graph.Dispose();
