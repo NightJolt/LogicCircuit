@@ -35,10 +35,10 @@ int main () {
 
     ImGui::SFML::Init(window_data->window);
 
-    ImGuiIO& imgui_io = ImGui::GetIO();
-    imgui_io.FontGlobalScale = 2.f;
+    // ImGuiIO& imgui_io = ImGui::GetIO();
+    // imgui_io.FontGlobalScale = 2.f;
 
-    fun::Level level;
+    fun::Level level("logic circuit");
     Graph graph;
 
     graph.SetClockSpeed(.01f);
