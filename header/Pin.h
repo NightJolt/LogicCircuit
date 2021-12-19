@@ -20,7 +20,7 @@ public:
 
     bool Interactable_Interaction(const sf::Vector2f&) final;
 
-    void Draw(fun::wndmgr::WindowData*) const override;
+    void Draw(fun::wndmgr::Window*) const override;
 
     static constexpr float RADIUS = 10;
     static constexpr int VERTEX_COUNT = 12;
@@ -53,7 +53,7 @@ public:
 
     void Update() final;
 
-    void Draw(fun::wndmgr::WindowData*) const override;
+    void Draw(fun::wndmgr::Window*) const override;
 
     OutPin* other = nullptr;
 };

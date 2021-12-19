@@ -16,7 +16,7 @@ public:
     void AddNode(Node*);
     void Update();
     void SetClockSpeed(float);
-    void Draw(fun::wndmgr::WindowData*) const;
+    void Draw(fun::wndmgr::Window*) const;
     void Dispose();
     void ShowSettings();
 

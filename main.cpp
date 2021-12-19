@@ -26,14 +26,14 @@ int main () {
 
     fun::resources::load_font("lato_light", "lato_light.ttf");
 
-    fun::wndmgr::init("LogicCircuit");
+    fun::wndmgr::init(fun::wndmgr::WindowData("LogicCircuit"));
 
-    fun::wndmgr::WindowData* window_data = fun::wndmgr::main_window;
-    window_data->window.resetGLStates();
-    //window_data->window.setFramerateLimit(60);
-    window_data->window.setVerticalSyncEnabled(false);
+    fun::wndmgr::Window* window = fun::wndmgr::main_window;
+    window->render_window.resetGLStates();
+    //window->window.setFramerateLimit(60);
+    window->render_window.setVerticalSyncEnabled(false);
 
-    ImGui::SFML::Init(window_data->window);
+    ImGui::SFML::Init(window->render_window);
 
     // ImGuiIO& imgui_io = ImGui::GetIO();
     // imgui_io.FontGlobalScale = 2.f;
@@ -43,46 +43,37 @@ int main () {
 
     graph.SetClockSpeed(.01f);
 
-    graph.AddNode(level.CreateLiveObject <AndNode> ());
-    graph.AddNode(level.CreateLiveObject <AndNode> ());
-    graph.AddNode(level.CreateLiveObject <NotNode> ());
-    graph.AddNode(level.CreateLiveObject <NandNode> ());
-    graph.AddNode(level.CreateLiveObject <NandNode> ());
-    graph.AddNode(level.CreateLiveObject <BulbNode> ());
-    graph.AddNode(level.CreateLiveObject <ButtonNode> ());
-    graph.AddNode(level.CreateLiveObject <ButtonNode> ());
-    graph.AddNode(level.CreateLiveObject <SwitchNode> ());
-    graph.AddNode(level.CreateLiveObject <SwitchNode> ());
-
-    fun::debugger::push_msg("adwde", "dqewe");
-    fun::debugger::push_msg("qwe", "wqeq");
+    graph.AddNode(level.CreateLiveObject <AndNode> ("AND"));
+    graph.AddNode(level.CreateLiveObject <AndNode> ("AND"));
+    graph.AddNode(level.CreateLiveObject <NotNode> ("NOT"));
+    graph.AddNode(level.CreateLiveObject <NandNode> ("NAND"));
+    graph.AddNode(level.CreateLiveObject <NandNode> ("NAND"));
+    graph.AddNode(level.CreateLiveObject <BulbNode> ("BULB"));
+    graph.AddNode(level.CreateLiveObject <ButtonNode> ("BUTTON"));
+    graph.AddNode(level.CreateLiveObject <ButtonNode> ("BUTTON"));
+    graph.AddNode(level.CreateLiveObject <SwitchNode> ("SWITCH"));
+    graph.AddNode(level.CreateLiveObject <SwitchNode> ("SWITCH"));
 
     // level.Init();
 
-    while (window_data->window.isOpen()) {
+    while (window->render_window.isOpen()) {
         fun::input::listen();
         fun::time::recalculate();
         fun::Interaction::Update();
-        ImGui::SFML::Update(window_data->window, fun::time::delta_time_object());
+        ImGui::SFML::Update(window->render_window, fun::time::delta_time_object());
 
-        window_data->PollEvents();
-        window_data->world_view.move(fun::input::keyboard_2d() * sf::Vector2f(1, -1) * window_data->zoom * .5f);
+        window->PollEvents();
+        window->world_view.move(fun::input::keyboard_2d() * sf::Vector2f(1, -1) * window->zoom * .5f);
 
         graph.Update();
-        graph.Draw(window_data);
+        graph.Draw(window);
 
         ImGui::ShowDemoWindow();
         level.ShowHierarchy();
         graph.ShowSettings();
 
         fun::debugger::display();
-
-        // sf::CircleShape cs(100, 20);
-
-        // window_data->window.draw(cs);
-        // window_data->window.display();
-
-        window_data->Display(sf::Color::Black);
+        window->Display(sf::Color::Black);
 
         graph.Dispose();
         level.Dispose();

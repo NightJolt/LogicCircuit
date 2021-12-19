@@ -10,7 +10,7 @@ public:
     explicit DefaultNode(const std::string&, int, int);
     ~DefaultNode() noexcept override = 0;
 
-    void Draw(fun::wndmgr::WindowData*) const final;
+    void Draw(fun::wndmgr::Window*) const final;
 
     void UpdateShape(const sf::Vector2f&) final;
 

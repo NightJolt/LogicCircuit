@@ -8,7 +8,7 @@ public:
     ButtonNode();
     ~ButtonNode() noexcept final;
 
-    void Draw(fun::wndmgr::WindowData*) const final;
+    void Draw(fun::wndmgr::Window*) const final;
 
     void Run() final;
 

@@ -38,10 +38,10 @@ void Pin::SetPosition(const sf::Vector2f& p) {
     shape.setPosition(p);
 }
 
-void Pin::Draw(fun::wndmgr::WindowData* window_data) const {
-    window_data->AddWorld(shape, Drawable_GetDrawingLayer());
+void Pin::Draw(fun::wndmgr::Window* window) const {
+    window->AddWorld(shape, Drawable_GetDrawingLayer());
 
-    if (wire) window_data->AddWorld(*wire, 1000000);
+    if (wire) window->AddWorld(*wire, 1000000);
 }
 
 bool Pin::Interactable_Interaction(const sf::Vector2f& mouse_position) {
@@ -90,10 +90,10 @@ void InPin::Update() {
     }
 }
 
-void InPin::Draw(fun::wndmgr::WindowData* window_data) const {
+void InPin::Draw(fun::wndmgr::Window* window) const {
     if (other) {
         wire->SetPoints(shape.getPosition() - sf::Vector2f { RADIUS, 0 }, other->shape.getPosition() + sf::Vector2f { RADIUS, 0 });
     }
 
-    Pin::Draw(window_data);
+    Pin::Draw(window);
 }

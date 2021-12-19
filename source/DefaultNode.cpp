@@ -23,11 +23,11 @@ DefaultNode::DefaultNode(const std::string& name, int in_pin_count, int out_pin_
 
 DefaultNode::~DefaultNode() noexcept = default;
 
-void DefaultNode::Draw(fun::wndmgr::WindowData* window_data) const {
-    Node::Draw(window_data);
+void DefaultNode::Draw(fun::wndmgr::Window* window) const {
+    Node::Draw(window);
 
-    window_data->AddWorld(shape, Drawable_GetDrawingLayer());
-    window_data->AddWorld(label, Drawable_GetDrawingLayer() + 2);
+    window->AddWorld(shape, Drawable_GetDrawingLayer());
+    window->AddWorld(label, Drawable_GetDrawingLayer() + 2);
 }
 
 void DefaultNode::UpdateShape(const sf::Vector2f& p) {

@@ -82,12 +82,12 @@ i32 Node::GetLayer() const {
     return Drawable_GetDrawingLayer();
 }
 
-void Node::Draw(fun::wndmgr::WindowData* window_data) const {
+void Node::Draw(fun::wndmgr::Window* window) const {
     for (auto& in_pin : in_pins) {
-        in_pin.Draw(window_data);
+        in_pin.Draw(window);
     }
 
     for (auto& out_pin : out_pins) {
-        out_pin.Draw(window_data);
+        out_pin.Draw(window);
     }
 }

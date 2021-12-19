@@ -31,7 +31,7 @@ public:
 
     virtual const sf::Vector2f& GetPosition() const = 0;
 
-    void Draw(fun::wndmgr::WindowData*) const override;
+    void Draw(fun::wndmgr::Window*) const override;
 
     std::vector <InPin> in_pins;
     std::vector <OutPin> out_pins;

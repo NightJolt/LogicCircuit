@@ -32,10 +32,10 @@ int BulbNode::GetOutPinCount() const {
     return 0;
 }
 
-void BulbNode::Draw(fun::wndmgr::WindowData* window_data) const {
-    Node::Draw(window_data);
+void BulbNode::Draw(fun::wndmgr::Window* window) const {
+    Node::Draw(window);
 
-    window_data->AddWorld(shape, Drawable_GetDrawingLayer());
+    window->AddWorld(shape, Drawable_GetDrawingLayer());
 }
 
 void BulbNode::UpdateShape(const sf::Vector2f& p) {

@@ -46,9 +46,9 @@ void Graph::SetClockSpeed(float c_s) {
     clock_speed = c_s;
 }
 
-void Graph::Draw(fun::wndmgr::WindowData* window_data) const {
+void Graph::Draw(fun::wndmgr::Window* window) const {
     for (auto node : nodes) {
-        node->Draw(window_data);
+        node->Draw(window);
     }
 }
 
