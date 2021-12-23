@@ -39,9 +39,9 @@ void Pin::SetPosition(const sf::Vector2f& p) {
 }
 
 void Pin::Draw(fun::wndmgr::Window* window) const {
-    window->AddWorld(shape, Drawable_GetDrawingLayer());
+    window->DrawWorld(shape, Drawable_GetDrawingLayer());
 
-    if (wire) window->AddWorld(*wire, 1000000);
+    if (wire) window->DrawWorld(*wire, 1000000);
 }
 
 bool Pin::Interactable_Interaction(const sf::Vector2f& mouse_position) {

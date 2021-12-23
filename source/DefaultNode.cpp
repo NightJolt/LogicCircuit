@@ -26,8 +26,8 @@ DefaultNode::~DefaultNode() noexcept = default;
 void DefaultNode::Draw(fun::wndmgr::Window* window) const {
     Node::Draw(window);
 
-    window->AddWorld(shape, Drawable_GetDrawingLayer());
-    window->AddWorld(label, Drawable_GetDrawingLayer() + 2);
+    window->DrawWorld(shape, Drawable_GetDrawingLayer());
+    window->DrawWorld(label, Drawable_GetDrawingLayer() + 2);
 }
 
 void DefaultNode::UpdateShape(const sf::Vector2f& p) {

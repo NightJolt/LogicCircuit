@@ -26,7 +26,7 @@ int main () {
 
     fun::resources::load_font("lato_light", "lato_light.ttf");
 
-    fun::wndmgr::init(fun::wndmgr::WindowData("LogicCircuit"));
+    fun::wndmgr::init(fun::wndmgr::WindowData("LogicCircuit"/*, { 1920, 1080 }, sf::Style::Default | sf::Style::Fullscreen*/));
 
     fun::wndmgr::Window* window = fun::wndmgr::main_window;
     window->render_window.resetGLStates();

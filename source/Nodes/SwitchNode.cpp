@@ -29,7 +29,7 @@ int SwitchNode::GetOutPinCount() const {
 void SwitchNode::Draw(fun::wndmgr::Window* window) const {
     Node::Draw(window);
 
-    window->AddWorld(shape, Drawable_GetDrawingLayer());
+    window->DrawWorld(shape, Drawable_GetDrawingLayer());
 }
 
 void SwitchNode::Update() {
